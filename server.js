@@ -1,13 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const app = express();
+let app = express();
 // access the schema
-const data = require("./noteSchema");
+let Data = require("./noteSchema");
 
 
 // mongodb connection
-mongoose.connect("mongodb://localhost/noteDB");
+mongoose.connect("mongodb://localhost/noteDB", {
+  useNewUrlParser: true
+});
 mongoose.connection.once("open", () => {
   return console.log("connect to DB");
 }).on("error", (error) => {
@@ -20,10 +22,62 @@ mongoose.connection.once("open", () => {
 
 // create note (Post request)
 app.post("/create", (req, res) => {
-  let note = new data
+  let note = new Data({
+    title: req.get("title"),
+    date: req.get("date"),
+    note: req.get("note")
+  });
+
+  note.save().then(() => {
+    if (note.isNew === false) {
+      console.log('Saved Data!');
+      // iphone will know
+      res.send("Saved data");
+    } else {
+      console.log('failed to save data');
+    }
+  });
+
 });
 // delete note (Delete request)
 
 // update note (put or patch request)
 
 // fetch one or all notes ( get request)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// server port
+// http://192.168.1.10:8081/create
+let server = app.listen(8081, "192.168.1.10", () => {
+  console.log('Server is running');
+});

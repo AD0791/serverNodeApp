@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+let mongoose = require('mongoose');
+let schema = mongoose.Schema;
 
 let note = new schema({
     title: String,
@@ -7,6 +7,6 @@ let note = new schema({
     note: String
 });
 
-const data = mongoose.model("data", note);
+const Data = mongoose.model("Data", note);
 
-module.exports = data
+module.exports = Data
