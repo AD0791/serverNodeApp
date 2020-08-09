@@ -2,14 +2,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 let app = express();
+
+
 // access the schema
 let Data = require("./noteSchema");
 
 
 // mongodb connection
-mongoose.connect("mongodb://localhost/noteDB", {
-  useNewUrlParser: true
+mongoose.connect("mongodb://localhost/newDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
+
 mongoose.connection.once("open", () => {
   return console.log("connect to DB");
 }).on("error", (error) => {
@@ -78,6 +82,6 @@ app.post("/create", (req, res) => {
 
 // server port
 // http://192.168.1.10:8081/create
-let server = app.listen(8081, "192.168.1.10", () => {
+app.listen(8081, "192.168.1.10", () => {
   console.log('Server is running');
 });
