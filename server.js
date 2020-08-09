@@ -9,7 +9,7 @@ let Data = require("./noteSchema");
 
 
 // mongodb connection
-mongoose.connect("mongodb://localhost/newDB", {
+mongoose.connect("mongodb://localhost/noteDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -81,7 +81,7 @@ app.post("/create", (req, res) => {
 
 
 // server port
-// http://192.168.1.10:8081/create
-app.listen(8081, "192.168.1.10", () => {
+// http://172.20.10.9:8081/create
+app.listen(8081, () => {
   console.log('Server is running');
 });
