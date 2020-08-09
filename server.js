@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-let app = express();
+const app = express();
 // access the schema
-let Data = require("./noteSchema");
+const data = require("./noteSchema");
 
 
 // mongodb connection
@@ -15,4 +15,15 @@ mongoose.connection.once("open", () => {
 });
 
 
-// controller situation
+// controller situation with the server
+//
+
+// create note (Post request)
+app.post("/create", (req, res) => {
+  let note = new data
+});
+// delete note (Delete request)
+
+// update note (put or patch request)
+
+// fetch one or all notes ( get request)
