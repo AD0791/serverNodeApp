@@ -79,7 +79,7 @@ app.get("/fetch", (req, res) => {
 });
 
 // server port
-// http://192.168.1.140:8081/create
-app.listen(8081, "192.168.1.140", () => {
+// http://192.168.1.18:8081/create
+app.listen(8081, "192.168.1.18", () => {
   console.log("Server is running");
 });
